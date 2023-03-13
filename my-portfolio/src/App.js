@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home'
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <header id="masthead" className="site-header">
+          <div className="site-branding">
+            <h1>Peter Nguyen</h1>
+          </div>
+          <nav className="site-navigation">
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+        <main id="main">
+      <Home/>
+        </main>
+        <footer>
+				  <p>&copy; Peter Nguyen 2023</p>
+        </footer>
+    </>
   );
 }
 
