@@ -18,17 +18,28 @@ const Skills = () => {
         }
         fetchData()
     }, [restPath])
+
+    for(let i = 0; i < restData.length - 1; i++) {
+    if(i > restData.length - 1) {
+        break;
+    }
+    if (restData[i]._embedded['wp:term'][0][0].name === restData[i + 1]._embedded['wp:term'][0][0].name) {
+        delete restData[i]._embedded['wp:term'][0][0].name
+    }
+    }
     
     return (
         <>
         { isLoaded ?
             <section id='skills'>
-                
-                {restData.map(post => 
-<>
-                <h2 className="entry-content" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h2>
-                <div className="entry-content" dangerouslySetInnerHTML={{__html:post.title.rendered}}></div>
-</>
+
+                {restData.slice(0).reverse().map(post => 
+                    <>
+                    {post._embedded['wp:term'][0][0].name ? 
+                    <h2 className="entry-title" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h2>
+                    : null}
+                    <li className="entry-content" dangerouslySetInnerHTML={{__html:post.title.rendered}}></li>
+                    </>
                 )}
             </section>
         : 
