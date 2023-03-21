@@ -32,11 +32,11 @@ const Skills = () => {
         <>
         { isLoaded ?
             <section id='skills'>
-
+                <h2>Skills</h2>
                 {restData.slice(0).reverse().map(post => 
                     <>
                     {post._embedded['wp:term'][0][0].name ? 
-                    <h2 className="entry-title" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h2>
+                    <h3 className="entry-title" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h3>
                     : null}
                     <li className="entry-content" dangerouslySetInnerHTML={{__html:post.title.rendered}}></li>
                     </>
