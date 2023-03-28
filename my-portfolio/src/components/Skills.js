@@ -33,14 +33,16 @@ const Skills = () => {
         { isLoaded ?
             <section id='skills'>
                 <h2>Skills</h2>
-                {restData.slice(0).reverse().map(post => 
-                    <>
-                    {post._embedded['wp:term'][0][0].name ? 
-                    <h3 className="entry-title" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h3>
-                    : null}
-                    <li className="entry-content" dangerouslySetInnerHTML={{__html:post.title.rendered}}></li>
-                    </>
-                )}
+                <ul className="skill-list">
+                    {restData.slice(0).reverse().map(post => 
+                        <>
+                        {post._embedded['wp:term'][0][0].name ? 
+                        <h3 className="skill-title" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h3>
+                        : null}
+                        <li className="skill-item" dangerouslySetInnerHTML={{__html:post.title.rendered}}></li>
+                        </>
+                    )}
+                </ul>
             </section>
         : 
             <p>Skills Content Not Loaded...</p>

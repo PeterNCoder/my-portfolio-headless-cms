@@ -1,13 +1,114 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* >>> TABLE OF CONTENTS:
+----------------------------------------
+# Base
+	- Typography
+	- Elements
+	- Links
+  - Media
+# Components
+	- Header
+	- Main
+	- Footer
+---------------------------------------- */
+
+/* ----------
+# Base
+---------- */
+
+html {
+  scroll-behavior: smooth;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ---------- Typography ---------- */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.05rem;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+h1,
+h2 {
+  font-family: "Times New Roman", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.15rem;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0rem 1.5rem;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 3rem;
+  margin-bottom: 0rem;
+}
+
+figcaption {
+  text-align: center;
+}
+
+/* ---------- Elements ---------- */
+
+article {
+  max-width: fit-content;
+}
+
+/* ---------- Links ---------- */
+
+a {
+  text-decoration: none;
+  color: red;
+}
+
+/* ---------- Media ---------- */
+
+img {
+  max-width: 25rem;
+  height: auto;
+}
+
+/* ----------
+# Components
+---------- */
+
+
+/* ---------- Header ---------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header ul {
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+header li {
+  list-style: none;
+  display: inline;
+}
+
+/* ---------- Main ---------- */
+
+main {
+  margin: 0 2rem;
+}
+
+form {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  text-align: center;
 }

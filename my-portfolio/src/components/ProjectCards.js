@@ -25,16 +25,16 @@ const ProjectCards = ( {featuredImage} ) => {
             <>
                 <h2>Projects</h2>
                 {restData.map(post => 
-                    <article key={post.id} id={`post-${post.id}`}>
-                        <figure>
+                    <article key={post.id} id={`project-${post.id}`}>
+                        <article>
                             {post.featured_media !== 0 && post._embedded['wp:featuredmedia'][0] &&
-                                <div className="featured-image" dangerouslySetInnerHTML={featuredImage(post._embedded['wp:featuredmedia'][0])}>
-                                </div>
+                                <figure className="project-image" dangerouslySetInnerHTML={featuredImage(post._embedded['wp:featuredmedia'][0])}>
+                                </figure>
                             }
                             <figcaption dangerouslySetInnerHTML={{__html:post.title.rendered}}>
                             </figcaption>
                             
-                        </figure>
+                        </article>
                     </article>
                 )}
 

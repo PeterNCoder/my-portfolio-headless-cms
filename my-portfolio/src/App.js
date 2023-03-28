@@ -1,9 +1,9 @@
-import './App.css';
 import Home from './components/Home'
 import About from './components/About'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
 import ProjectCards from './components/ProjectCards'
+import HeaderNav from './components/HeaderNav'
 
 function App() {
 
@@ -25,27 +25,21 @@ function App() {
 
   return (
     <>
-        <header>
-          <nav>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-        </header>
-        <main>
-      <Home/>
-      <About/>
-      <ProjectCards featuredImage={featuredImage} />
-      <Skills/>
-      <Contact/>
-        </main>
-        <footer>
-				  <p>&copy; Peter Nguyen 2023</p>
-        </footer>
+      <header>
+        <HeaderNav/>
+      </header>
+
+      <main>
+        <Home/>
+        <About/>
+        <ProjectCards featuredImage={featuredImage} />
+        <Skills/>
+        <Contact/>
+      </main>
+        
+      <footer>
+        <p>&copy; Peter Nguyen 2023</p>
+      </footer>
     </>
   );
 }
