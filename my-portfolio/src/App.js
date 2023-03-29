@@ -1,9 +1,12 @@
+import Header from './components/Header'
 import Home from './components/Home'
 import About from './components/About'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
-import ProjectCards from './components/ProjectCards'
-import HeaderNav from './components/HeaderNav'
+import WorksCards from './components/WorksCards'
+import WorksSingle from './components/WorksSingle'
+import Footer from './components/Footer'
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 function App() {
 
@@ -25,21 +28,36 @@ function App() {
 
   return (
     <>
+    <Router basename='/'>
       <header>
-        <HeaderNav/>
+        <Header/>
       </header>
 
       <main>
-        <Home/>
-        <About/>
-        <ProjectCards featuredImage={featuredImage} />
-        <Skills/>
-        <Contact/>
+        <Routes>
+          <Route 
+            path='/' 
+            element=
+            { <>
+              <Home/>
+              <About/>
+              <WorksCards featuredImage={featuredImage}/>
+              <Skills/>
+              <Contact/>
+            </> } 
+          />
+        
+          <Route 
+            path="/:id" 
+            element={<WorksSingle/>} 
+          />
+        </Routes>
       </main>
         
       <footer>
-        <p>&copy; Peter Nguyen 2023</p>
+        <Footer/>
       </footer>
+    </Router>
     </>
   );
 }

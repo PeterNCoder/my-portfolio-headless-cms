@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Loading from './Loading'
 
 const Skills = () => {
     const restPath = 'http://localhost/wp-portfolio/wp-json/wp/v2/fwd-skills?per_page=100&_embed'
@@ -39,13 +40,15 @@ const Skills = () => {
                         {post._embedded['wp:term'][0][0].name ? 
                         <h3 className="skill-title" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h3>
                         : null}
+                        
+                        
                         <li className="skill-item" dangerouslySetInnerHTML={{__html:post.title.rendered}}></li>
                         </>
                     )}
                 </ul>
             </section>
         : 
-            <p>Skills Content Not Loaded...</p>
+            <Loading/>
         }
         </>   
     )

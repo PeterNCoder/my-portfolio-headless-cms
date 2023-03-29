@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Loading from './Loading'
 
 const Home = () => {
     const restPath = 'http://localhost/wp-portfolio/wp-json/wp/v2/pages/6'
@@ -22,13 +23,13 @@ const Home = () => {
     return (
         <>
         { isLoaded ?
-            <section id='home'>
+            <section className='home'>
                 <h1>{restData.title.rendered}</h1>
                 <h2 dangerouslySetInnerHTML={{__html:restData.content.rendered}}>
                 </h2>
             </section>
         : 
-            <p>Hero Content Not Loaded...</p>
+            <Loading/>
         }
         </>   
     )

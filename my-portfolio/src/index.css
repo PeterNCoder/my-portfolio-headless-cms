@@ -21,28 +21,33 @@ html {
 
 /* ---------- Typography ---------- */
 
+@font-face {
+  font-family: 'Neue Black';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url(./fonts/TheNeue-Black.woff2) format('woff2');
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.5;
   letter-spacing: 0.05rem;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #e2e2e2;
+  color: #000;
 }
 
 h1,
-h2 {
-  font-family: "Times New Roman", sans-serif;
-  font-size: 1.5rem;
+h2{
+  font-family: 'Neue Black', "Times New Roman", sans-serif;
   letter-spacing: 0.15rem;
-  text-align: center;
   text-transform: uppercase;
-  padding: 0rem 1.5rem;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 3rem;
   margin-bottom: 0rem;
 }
@@ -57,11 +62,21 @@ article {
   max-width: fit-content;
 }
 
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  display: inline-block;
+}
+
 /* ---------- Links ---------- */
 
 a {
   text-decoration: none;
-  color: red;
+  color: black;
+}
+
+svg {
+  fill: white;
 }
 
 /* ---------- Media ---------- */
@@ -71,6 +86,10 @@ img {
   height: auto;
 }
 
+.works-img-container {
+  margin: 0;
+}
+
 /* ----------
 # Components
 ---------- */
@@ -78,17 +97,44 @@ img {
 
 /* ---------- Header ---------- */
 
+header ul {
+  text-align: center;
+  padding-left: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.header-nav {
+  background-color: gray;
+  bottom: 0;
+  left: 0;
+  color: #fff !important;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
+
+header img {
+  max-width: 5rem;
+}
+
 header {
+  font-family: 'Neue Black', "Times New Roman", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-transform: uppercase;
 }
 
 header ul {
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-around;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 header li {
@@ -107,8 +153,37 @@ form {
   margin: 0 auto;
 }
 
+.skill-title {
+  font-weight: 800;
+}
+
+.skill-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.skill-list li:before {
+  content: '✓ '
+}
+
+#contact svg {
+  fill: black;
+}
+
+.contact-title {
+  margin: 0;
+}
+
+.contact-items-container {
+  background-color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
 /* ---------- Footer ---------- */
 
 footer {
   text-align: center;
+  margin-bottom: 5rem;
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Loading from './Loading'
 
 const About = () => {
     const restPath = 'http://localhost/wp-portfolio/wp-json/wp/v2/pages/46'
@@ -28,7 +29,7 @@ const About = () => {
                 </div>
             </section>
         : 
-            <p>About Content Not Loaded...</p>
+            <Loading/>
         }
         </>   
     )
