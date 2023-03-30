@@ -19,6 +19,40 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  margin: 0;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #eee;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
+}
+
 /* ---------- Typography ---------- */
 
 @font-face {
@@ -34,7 +68,7 @@ body {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.025rem;
   background-color: #e2e2e2;
   color: #000;
 }
@@ -42,7 +76,7 @@ body {
 h1,
 h2{
   font-family: 'Neue Black', "Times New Roman", sans-serif;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.10rem;
   text-transform: uppercase;
 }
 
@@ -62,10 +96,37 @@ article {
   max-width: fit-content;
 }
 
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  display: inline-block;
+@media (min-width: 28rem) {
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1.5rem;
+  }
+}
+
+figure {
+  margin: 0 0 2rem;
+}
+
+#about,
+#works,
+#skills,
+#contact {
+  padding-top: 3.5rem;
+}
+
+.faux-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid black;
+  border-radius: 0.3rem;
+  box-shadow: 0.25rem 0.25rem 1rem #00000080;
+}
+
+@media (min-width: 62.5rem) {
+  .faux-btn:hover {
+    color: red;
+  }
 }
 
 /* ---------- Links ---------- */
@@ -75,14 +136,19 @@ a {
   color: black;
 }
 
+a:hover {
+  color: red;
+}
+
 svg {
   fill: white;
 }
 
+
 /* ---------- Media ---------- */
 
 img {
-  max-width: 25rem;
+  max-width: 100%;
   height: auto;
 }
 
@@ -115,13 +181,61 @@ header ul {
   z-index: 100;
 }
 
+@media (min-width: 62.5rem) {
+  #site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding-bottom: 1rem;
+    background: linear-gradient(#e2e2e2 80%, #e2e2e250 90%, transparent);
+  }
+  .header-nav {
+    position: relative;
+    max-width: 100rem;
+    background-color: transparent;
+  }
+  header {
+    /* background-color: #80808050; */
+    margin: 0;
+  }
+  .header-nav svg {
+    display: inline;
+    vertical-align: middle;
+    padding-right: 1rem;
+    fill: #000;
+  }
+
+  header ul {
+    font-size: 1rem;
+  }
+}
+
+.entry-text, 
+.portrait {
+  transform: translateY(4.5rem);
+  text-shadow: 2px 2px #fff;
+}
+
+@media (min-width: 75rem) {
+  .entry-text, 
+  .portrait {
+    transform: translateY(-5.5rem);
+  }
+}
+
+.home {
+  height: 100vh;
+  text-align: center;
+}
+
 svg {
   display: block;
   margin: 0 auto;
 }
 
-header img {
-  max-width: 5rem;
+header a, header li {
+  height: 100%;
+  width: 100%;
 }
 
 header {
@@ -130,6 +244,7 @@ header {
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;
+  padding: 0.5rem 0.5rem 0;
 }
 
 header ul {
@@ -148,21 +263,22 @@ main {
   margin: 0 2rem;
 }
 
+#about p {
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0.5rem 0.5rem 1.5rem #000;
+}
+
 form {
   width: fit-content;
   margin: 0 auto;
 }
 
-.skill-title {
+.skills-title {
   font-weight: 800;
 }
 
-.skill-list {
-  padding-left: 0;
-  list-style: none;
-}
-
-.skill-list li:before {
+.skills-content p:before {
   content: '✓ '
 }
 
@@ -178,12 +294,166 @@ form {
   background-color: #fff;
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  box-shadow: 0.5rem 0.5rem 1.5rem #000;
+}
+
+.work-skill-list {
+  padding-left: 0;
+  margin: 2rem 0 3rem;
+}
+
+.work-skill-item {
+  list-style: none;
+  background-color: #fff;
+  display: inline;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0.5rem 0.5rem 1.5rem #000;
+}
+
+.work-img {
+  display: block;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  border: 2px solid #000;
+}
+
+@media (min-width: 70rem) {
+.work-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.work-img {
+  margin: 2rem;
+}
 }
 
 /* ---------- Footer ---------- */
 
 footer {
   text-align: center;
+  margin-top: 1.5rem;
   margin-bottom: 5rem;
+}
+
+@media (min-width: 62.5rem) {
+  footer {
+    margin: 1.5rem;
+  }
+}
+
+.h1-animate {
+  animation: leftright 3s;
+  animation-iteration-count: 1;
+}
+
+.h2-animate {
+  animation: leftright 3s;
+  animation-iteration-count: 1;
+}
+
+@keyframes leftright {
+  0%   { 
+    transform: translateX(-30rem);
+    opacity: 0;
+   }
+}
+
+@keyframes appear {
+  0%   { 
+    opacity: 0;
+   }
+}
+
+
+.portrait {
+  border-radius: 100%;
+  border: 2px solid #fff;
+  animation: appear 4s;
+  animation-iteration-count: 1;
+  box-shadow: 0.5rem 1rem 1.5rem #000;
+}
+
+@media (min-width: 75rem) {
+  .home {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+@media (min-width: 100rem) {
+  #root {
+        display: grid;
+        grid-template-columns: 1fr minmax(0, 100rem) 1fr;
+        grid-template-areas:
+          "header header header"
+          ". main ."
+          "footer footer footer";
+  }
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
+
+header {
+  animation: appear 3s;
+}
+
+.arrows {
+	width: 4rem;
+	height: 5rem;
+	position: absolute;
+	left: 50%;
+  margin-left: -1.8rem;
+	bottom: 4rem;
+}
+
+@media (min-width: 75rem) {
+  .arrows {
+    bottom: 0rem;
+  }
+}
+
+.arrows path {
+	stroke: #ff0000;
+	fill: transparent;
+	stroke-width: 1px;	
+	animation: arrow 2s infinite;
+	-webkit-animation: arrow 2s infinite; 
+}
+
+@keyframes arrow
+{
+0% {opacity:0}
+40% {opacity:1}
+80% {opacity:0}
+100% {opacity:0}
+}
+
+.arrows path.a1 {
+	animation-delay:-1s;
+
+}
+
+.arrows path.a2 {
+	animation-delay:-0.5s;
+
+}
+
+.arrows path.a3 {	
+	animation-delay:0s;
+
 }

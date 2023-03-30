@@ -20,32 +20,50 @@ const Skills = () => {
         fetchData()
     }, [restPath])
 
-    for(let i = 0; i < restData.length - 1; i++) {
-    if(i > restData.length - 1) {
-        break;
-    }
-    if (restData[i]._embedded['wp:term'][0][0].name === restData[i + 1]._embedded['wp:term'][0][0].name) {
-        delete restData[i]._embedded['wp:term'][0][0].name
-    }
-    }
+    const restData2 = restData;
+    console.log(restData2);
+
+    // for(let i = 0; i < restData.length - 1; i++) {
+    // if(i > restData.length - 1) {
+    //     break;
+    // }
+    // if (restData[i]._embedded['wp:term'][0][0].name === restData[i + 1]._embedded['wp:term'][0][0].name) {
+    //     delete restData[i]._embedded['wp:term'][0][0].name
+    // }
+    // }
     
     return (
         <>
         { isLoaded ?
             <section id='skills'>
                 <h2>Skills</h2>
-                <ul className="skill-list">
+                <div className="skills-content">
                     {restData.slice(0).reverse().map(post => 
-                        <>
-                        {post._embedded['wp:term'][0][0].name ? 
-                        <h3 className="skill-title" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h3>
-                        : null}
-                        
-                        
-                        <li className="skill-item" dangerouslySetInnerHTML={{__html:post.title.rendered}}></li>
-                        </>
+                        <div key={post.id}>
+                            {post._embedded['wp:term'][0][0].name ? 
+                            <h3 className="skills-title" dangerouslySetInnerHTML={{__html:post._embedded['wp:term'][0][0].name}}></h3>
+                            : null}
+                            
+                            <p className="skills-item" dangerouslySetInnerHTML={{__html:post.title.rendered}}></p>
+                        </div>
                     )}
-                </ul>
+                </div>
+
+
+
+                {restData2.map(post => 
+                        <div key={post.id}>
+                            <span>
+                            <h3 className="skills-title" dangerouslySetInnerHTML={{__html:post.title.rendered}}></h3>
+                            
+                            <div className="skills-item" dangerouslySetInnerHTML={{__html:post.content.rendered}}></div>
+                            </span>
+                        </div>
+                    )}
+
+
+
+
             </section>
         : 
             <Loading/>
